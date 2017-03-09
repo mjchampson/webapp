@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+<img id="light" class="red" src="red.png"> 
+<script>
+var image = new Array("red.png","red.png","green.png","yellow.png");
+var trafficLight = document.getElementById('light');
+var time = 0;
+var light = 0;
+var timer;
+var lights = [
+    {
+    duration: 5,
+    color: 'red',
+    image: 'red.png'
+  },
+  {
+    duration: 10,
+    color: 'green',
+    image: 'green.png'
+  },
+  {
+    duration: 3,
+      color: 'yellow',
+    image: 'yellow.png'
+  }
+]
+
+function tlmoto() {
+        time++;
+    if(time == lights[light].duration) {
+        time = 0;
+        light = light < lights.length - 1 ? light= light + 1 : 0;
+        trafficLight.src = lights[light].image;
+        trafficLight.className = lights[light].color;
+    }
+
+}
+
+timer = setInterval(tlmoto,1000);
+
+
+</script>
+</body>
+</html>

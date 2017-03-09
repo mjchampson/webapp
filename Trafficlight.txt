@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<img id="light" class="red" src="red.jpg"> 
+
+
+ <script>
+
+var img = new Array("red.jpg","red.jpg","green.jpg","yellow.jpg");
+
+
+
+var timeIndex = 0;
+var lightIndex = 0;
+var timer;
+var trafficLight = document.getElementById('light');
+
+var lights = [
+    {
+    duration: 5,
+    color: 'red',
+    image: 'red.jpg'
+  },
+  {
+    duration: 4,
+    color: 'green',
+    image: 'green.jpg'
+  },
+  {
+    duration: 1,
+    color: 'yellow',
+    image: 'yellow.jpg'
+  }
+]
+
+function advanceTrafficLightTimer() {
+        timeIndex++;
+    if(timeIndex == lights[lightIndex].duration) {
+        timeIndex = 0;
+        lightIndex = lightIndex < lights.length - 1 ? lightIndex = lightIndex + 1 : 0;
+        trafficLight.src = lights[lightIndex].image;
+        trafficLight.className = lights[lightIndex].color;
+    }
+
+}
+
+timer = setInterval(advanceTrafficLightTimer,1000);
+
+
+</script>
+</body>
+</html>
